@@ -1,23 +1,24 @@
-import logo from "../../logo.svg";
 import "./Home.css";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
+  let navigate = useNavigate();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div className="home-body">
+      <div className="home-container">
+        <div className="home-card" onClick={() => navigate("/auth/zod/login")}>
+          <h2>Login Page ZOD Validation</h2>
+          <p>This login page using ZOD Validation</p>
+        </div>
+        <div
+          className="home-card"
+          onClick={() => navigate("/auth/manual/login")}
         >
-          Learn React
-        </a>
-      </header>
+          <h2>Login Page Manual Validation</h2>
+          <p>This login page using Manual Validation</p>
+        </div>
+      </div>
     </div>
   );
 }

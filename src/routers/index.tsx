@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Login from "../pages/Login";
+import { Login, LoginZOD } from "../pages/Login";
+import Protected from "../pages/Protected";
 import App from "../pages/Home/Home";
 
 const RouteConfig = () => {
@@ -7,7 +8,9 @@ const RouteConfig = () => {
     <Router>
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="/auth/login" element={<Login />} />
+        <Route path="/auth/zod/login" element={<LoginZOD />} />
+        <Route path="/auth/manual/login" element={<Login />} />
+        <Route path="/protected" element={<Protected />} />
       </Routes>
     </Router>
   );

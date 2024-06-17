@@ -12,7 +12,7 @@ const cookies = new Cookies(null, { path: "/" });
 
 const axiosInstance = _axios.create();
 
-const API_BASE_URL = process.env["NEXT_PUBLIC_API_URL"];
+const API_BASE_URL = process.env["REACT_APP_FOO"];
 
 export const isClientSide = typeof window !== "undefined";
 

@@ -1,6 +1,6 @@
 import "./Login.css";
 
-const Login = () => {
+const LoginZOD = () => {
   return (
     <div className="login-body">
       <div className="login-container">
@@ -29,4 +29,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginZOD;
