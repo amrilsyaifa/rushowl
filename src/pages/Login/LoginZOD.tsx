@@ -16,6 +16,7 @@ const LoginZOD = () => {
   const {
     register,
     handleSubmit,
+    setError,
     formState: { errors, isValid },
   } = useForm<FormData>({
     resolver: zodResolver(LoginSchema), // Apply the zodResolver
@@ -38,6 +39,10 @@ const LoginZOD = () => {
       // Handle your API errors here
       console.error("isi error >>> ", error);
       setIsLoading(false);
+      setError("password", {
+        type: "manual",
+        message: "Invalid email or password",
+      });
     }
   };
 

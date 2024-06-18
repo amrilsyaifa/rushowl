@@ -89,8 +89,8 @@ const Login = () => {
         }
       } catch (error) {
         // Handle your API errors here
-        console.error("isi error >>> ", error);
         setIsLoading(false);
+        setErrors({ password: "Invalid email or password" });
       }
     },
     [memoizedEmail, memoizedPassword]

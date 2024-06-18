@@ -3,7 +3,7 @@ import axios from "../../libs/axios";
 import { LoginInputProps } from "./types";
 
 const loginFn = async (param: LoginInputProps): Promise<any> => {
-  return new Promise(async (resolve) => {
+  return new Promise(async (resolve, reject) => {
     if (
       param.email === "user@example.com" &&
       param.password === "password123"
@@ -12,8 +12,12 @@ const loginFn = async (param: LoginInputProps): Promise<any> => {
         resolve({ message: "Login successful", token: "123456" });
       }, 3000);
     } else {
-      const response = await axios.post("/login", param);
-      return response.data;
+      try {
+        const response = await axios.post("/login", param);
+        resolve(response.data);
+      } catch (error) {
+        reject(error);
+      }
     }
   });
 };
