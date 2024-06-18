@@ -9,6 +9,6 @@ export const LoginSchema: ZodType<FormData> = z.object({
   email: z.string().email(),
   password: z
     .string()
-    .min(8, { message: "Minimum password is 8" })
-    .max(20, { message: "Maximum password is 20" }),
+    .min(8, { message: "Password must be at least 8 characters" })
+    .max(20, { message: "Password must be at least 20 characters" }),
 });

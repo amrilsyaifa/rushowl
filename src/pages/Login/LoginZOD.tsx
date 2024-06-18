@@ -3,9 +3,16 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import "./Login.css";
 import { LoginSchema, FormData } from "./schemas";
 import useLogin from "../../services/auth/useLogin";
+import { useState } from "react";
+import Cookies from "universal-cookie";
+import { useNavigate } from "react-router-dom";
+
+const cookies = new Cookies(null, { path: "/" });
 
 const LoginZOD = () => {
-  const { mutate } = useLogin();
+  const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const { mutateAsync } = useLogin();
   const {
     register,
     handleSubmit,
@@ -16,19 +23,24 @@ const LoginZOD = () => {
 
   const onSubmit = async (data: FormData) => {
     try {
+      setIsLoading(true);
       // Call your API here
-      const response = await mutate(data);
+      const response = await mutateAsync(data);
 
       // Handle your API response here
       // Setup Cookies or Local Storage here
-      console.log("isi response >>> ", response);
+      setIsLoading(false);
+      if (response.token) {
+        cookies.set("token", response.token, { path: "/" });
+        navigate("/protected");
+      }
     } catch (error) {
       // Handle your API errors here
       console.error("isi error >>> ", error);
+      setIsLoading(false);
     }
   };
 
-  console.log("isi isValid >>> ", isValid);
   return (
     <div className="login-body">
       <div className="login-container">
@@ -51,8 +63,8 @@ const LoginZOD = () => {
               {...register("password")}
             />
             <span className="error-message">{errors?.password?.message}</span>
-            <button type="submit" disabled={!isValid}>
-              Login
+            <button type="submit" disabled={!isValid || isLoading}>
+              {isLoading ? "Loading..." : "Login"}
             </button>
           </form>
         </div>
