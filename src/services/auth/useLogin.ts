@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import axios from "@/libs/axios";
+import axios from "../../libs/axios";
 import { LoginInputProps } from "./types";
 
 const loginFn = async (param: LoginInputProps): Promise<any> => {

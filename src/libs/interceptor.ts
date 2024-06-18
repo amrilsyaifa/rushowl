@@ -5,7 +5,7 @@ import _axios, {
   InternalAxiosRequestConfig,
 } from "axios";
 import Cookies from "universal-cookie";
-import { identityToken } from "@/constants/cookie";
+import { identityToken } from "../constants/cookie";
 import onRefreshToken from "./refreshToken";
 
 const cookies = new Cookies(null, { path: "/" });

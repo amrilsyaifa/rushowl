@@ -1,6 +1,6 @@
 import _axios, { AxiosResponse } from "axios";
 import Cookies from "universal-cookie";
-import { identityRefreshToken, identityToken } from "@/constants/cookie";
+import { identityRefreshToken, identityToken } from "../constants/cookie";
 import onLogout from "./logout";
 
 const cookies = new Cookies(null, { path: "/" });

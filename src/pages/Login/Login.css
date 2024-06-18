@@ -34,7 +34,6 @@ form {
 
 input {
   padding: 10px;
-  margin-bottom: 12px;
   border: 2px solid #ddd; /* Border color input */
   border-radius: 8px; /* Border radius input */
   transition: border-color 0.3s ease-in-out;
@@ -57,6 +56,20 @@ button {
   transition: background-color 0.3s ease-in-out;
 }
 
+button[disabled="disabled"],
+button:disabled,
+button[disabled]:hover {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
 button:hover {
   background-color: #ff6600; /* Warna button saat hover */
+}
+
+.error-message {
+  font-size: 12px;
+  margin-bottom: 12px;
+  color: red;
 }
